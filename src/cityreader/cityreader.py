@@ -26,7 +26,7 @@ def cityreader(cities=[]):
   with open('src/cityreader/cities.csv', newline='') as csvfile:
     cityread = csv.DictReader(csvfile)
     for row in cityread:
-      cities.append(City(row['city'], row['lat'], row['lng']))
+      cities.append(City(row['city'], float(row['lat']), float(row['lng'])))
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
@@ -69,6 +69,21 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+import sys
+import math
+while True:
+  cmd = input("lat,lon input")
+  values = cmd.split(", ")
+  arg1 = int(values[0])
+  arg2 = int(values[1])
+
+
+
+  def lat_lon_check(arg1, arg2):
+    x = math.sin(math.pi/2-arg1) * math.cos(arg2)
+    print(x)
+  lat_lon_check(arg1, arg2)
+
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
